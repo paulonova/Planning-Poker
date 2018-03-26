@@ -1,0 +1,157 @@
+
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:700);
+
+.scrum-card {
+	position: relative; 
+	font-family: 'Oswald', sans-serif;
+	font-size: 10em;
+	border: 1px #000 solid;
+	border-radius: 10px;
+	margin: 0 auto;
+	padding: 0;
+	width: 200px;
+	height: 300px;
+	line-height: 300px;
+	white-space: nowrap;
+	text-align: center;
+}
+
+
+
+/* Header */
+.header{
+    background-image: url("../images/planning-poker-bkg.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.gameName{    
+    font-family: 'Oswald', sans-serif;
+    font-size: 5em;
+    color:whitesmoke;
+    text-align: center;
+}
+
+/* // controls */
+.controls {
+    margin: 20px 5px;
+    text-align: center;    
+}
+
+.controls.input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.controls_button {
+    margin-top: 10px;
+}
+
+
+/* // btn */
+.btn {
+    background: #78a5a3;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+/* // card */
+.card {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    position: relative; 
+	font-family: 'Oswald', sans-serif;
+	font-size: 8em;
+	border: 1px #000 solid;
+	border-radius: 10px;
+	margin: 10px 10px;
+	width: 200px;
+	height: 300px;
+	line-height: 250px;
+	white-space: nowrap;
+	text-align: center;
+    /* vertical-align: middle; */
+    transition: all 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card_inner {
+    background: linear-gradient(to bottom right, #028056, #01c785, #00ffaa);
+	border-radius: 10px;
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    vertical-align: middle;
+    transition: all 0.6s;
+}
+
+.card_name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+
+.card-selected {
+    transform: translateY(-10px);
+}
+
+.card-selected.card_inner {
+    background: #78a5a3;
+}
+
+.card-user.card_inner {
+    background: linear-gradient(to bottom right, #973999, #f8598b, #f7bf00)
+}
+
+.card-ready:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    background: green;
+    border-radius: 50%;
+}
+
+/* // score
+//////////// */
+
+.score {
+    text-align: center;
+    overflow: auto;
+    width: 100%;
+}
+
+.score_title{
+    text-align: center;
+    padding: 10px;
+}
+
+/* // deck
+//////////// */
+.deck {
+    text-align: center;
+    overflow: auto;
+    width: 100%;
+}
+
+.deck_inner{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: nowrap;
+    padding-top: 30px; 
+    width: auto;
+}

@@ -8,28 +8,29 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="css/styles.css" />
-    <script src="js/main.js" defer></script>
+    <!-- <script src="js/main.js" defer></script> -->
+    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <main class="container">
+    <main class="main_app container">
         
             <div class="header jumbotron bg-secondary">
                     <h1 class="gameName">Planning Poker</h1>
             </div>
             <br><br><br>
             
-
-            <!-- SECOND PROJECT EXAMPLE -->
             <section>
                     <div class="app">
                             <div class="app_controls">
                                 <div class="controls">
-                                    <input type="text" name="name" id="name" placeholder="Player Name" />
+                                    <input class="input-player form-control" type="text" name="name" 
+                                            id="name" placeholder="Write your name + click in the card" />
                                     <div class="controls_button">
                                         <button class="btn" id="finish">Show</button>
                                         <button class="btn" id="clear">Clear</button>
                                         <button class="btn" id="add-player">Add Player</button>
+                                        <!-- <button class="btn" id="add-player">Add Player</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -48,12 +49,11 @@
             </section>
 
 
-            
-                <div id="card-container" class="cards">    
-                    <div class="scrum-card">
-                        <span>0</span>
-                    </div>                     
-                </div> 
+            <!-- Player Section -->
+                <section id="user-section" class="players-container ">                                         
+                </section> 
+
+                <br><br><br>
 
 
     </main>

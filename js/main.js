@@ -1,26 +1,7 @@
 
 
 
-var divElement;
-var spanElement;
-var cardContainer = document.getElementById("card-container");
-
-
-function createAllCards(){
-
-    for (let i = 0; i < cardsValue.length; i++) {
-        divElement = document.createElement("DIV");
-        divElement.setAttribute("class", "scrum-card");
-        spanElement.document.createElement("SPAN");
-        // spanElement.
-        
-    } 
-
-}
-
-// SECOND PROJECT EXAMPLE
-
-let cards = ["0", "1/2", "1","2","3","5","8","13","20","40", "?"];
+let cards = ["0", "1/2", "1","2","3","5","8","13","20","40", "?", "&#x2615;"];
 
 let users = [];
 
@@ -29,6 +10,8 @@ let playerName;
 let selectedCard = null;
 
 let gameState = false;
+
+let playerSelected = false;
 
 let deck = document.getElementById('deck');
 
@@ -41,23 +24,16 @@ let clearBtn = document.getElementById('clear');
 let nameInput = document.getElementById('name');
 
 
-
-
-class Player{
-    constructor(name, score){
-
-    }
-}
-
-
-
 /**
  * Show cards
+ * The preventDefault() method cancels the event if it is cancelable, 
+ * meaning that the default action that belongs to the event will not occur.
  */
 finishBtn.addEventListener('click', function(e){
     e.preventDefault();
     
 });
+
 
 /**
  * Clear cards
@@ -74,6 +50,8 @@ function selectCard(card){
     playerName = nameInput.value;
     if(playerName){
         selectedCard = card;
+        console.log("SelectedCard: " + selectedCard);
+        console.log("SelectedCard2: " + card);
         render();
         saveSelection();
     }else{
@@ -96,13 +74,16 @@ function saveSelection(){
  */
 function addCard(element, value, name){
     let cardElement = document.createElement('div');
+    console.log("element: " + element + " Value: " + value + " Name: " + name);
     
     if(name){
         cardElement.className = value ? 'card card-user card-ready' : 'card card-user';
-        cardElement.innerHTML = '<div class="card_inner">' + (gameState ? value : '') + (name ? '<div class="card_name">' + name + '</div>' : '') + '</div>';
+        cardElement.innerHTML = '<div class="card_inner">' + (gameState ? value : '') 
+            + (name ? '<div class="card_name">' + name + '</div>' : '') + '</div>';
     }else{
         cardElement.className = value == selectedCard ? 'card card-selected' : 'card';
-        cardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' + name + '</div>' : '') + '</div>';
+        cardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' 
+            + name + '</div>' : '') + '</div>';
     }
     
     
@@ -120,6 +101,31 @@ function addCard(element, value, name){
 }
 
 
+// Create user cards when click in the card
+function createUserCards(name){
+    let userSection = document.getElementById("user-section");
+    let cardElement = document.createElement('div');
+    console.log("Test Name: " + name);
+
+    cardElement.className = value ? 'card card-user card-ready' : 'card card-user';
+        cardElement.innerHTML = '<div class="card_inner">' + (gameState ? value : '') 
+            + (name ? '<div class="card_name">' + name + '</div>' : '') + '</div>';
+            userSection.appendChild(cardElement);
+
+    // if(name){
+        
+    // }else{
+    //     cardElement.className = value == selectedCard ? 'card card-selected' : 'card';
+    //     cardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' 
+    //         + name + '</div>' : '') + '</div>';
+    //         userSection.appendChild(cardElement);
+    // }
+
+    
+
+}
+
+
 /**
  * Render UI elements
  */
@@ -129,17 +135,27 @@ function render(){
 }
 
 function renderScore(){
-    score.innerHTML = '<div class="score_title">Players</div>';
-    
+    score.innerHTML = '<br><div class="score_title">Players Waiting</div>';
+    console.log("GAME STATE: " + gameState);
     if(gameState){
         score.classList.add('score-visible');
     }else{
         score.classList.remove('score-visible')
     }
-    
-    users.forEach( x => {
-        addCard(score, x.selected, x.name);
+
+    if(!playerSelected){
+        let name = document.getElementById("name").value;
+        users.push(name);
+        users.forEach( x => {
+            addCard(score, x.selected, x.name);
+            console.log("TESTANDO x: " + score + " selected: " + x.selected + " name:" + x.name);
     })
+    }else{
+        playerSelected = true;
+    }
+
+    console.log("TESTANDO SCORE: " + playerSelected);
+    
 }
 
 

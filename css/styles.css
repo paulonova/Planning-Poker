@@ -2,19 +2,12 @@
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:700);
 
-.scrum-card {
-	position: relative; 
-	font-family: 'Oswald', sans-serif;
-	font-size: 10em;
-	border: 1px #000 solid;
-	border-radius: 10px;
-	margin: 0 auto;
-	padding: 0;
-	width: 200px;
-	height: 300px;
-	line-height: 300px;
-	white-space: nowrap;
-	text-align: center;
+
+
+/* Main Container */
+.main_app{
+    background: #78a5a3;
+    padding: 0;
 }
 
 
@@ -24,6 +17,7 @@
     background-image: url("../images/planning-poker-bkg.jpg");
     background-repeat: no-repeat;
     background-size: auto;
+    width: 1wv;
 }
 
 .gameName{    
@@ -39,11 +33,16 @@
     text-align: center;    
 }
 
-.controls.input {
+.input-player{
+    width: 310px;
+    margin: 0 auto;
+}
+
+/* .controls.input {
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ddd;
-}
+    border: 1px solid #ddd;    
+} */
 
 .controls_button {
     margin-top: 10px;
@@ -52,30 +51,58 @@
 
 /* // btn */
 .btn {
-    background: #78a5a3;
+    background: #184b48;
     border: none;
     padding: 10px;
+    color: whitesmoke;
+    width: 100px;
     border-radius: 5px;
+}
+
+.btn:hover {
+    background: teal;
 }
 
 
 /* // card */
-.card {
+
+/* #user-section{
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
     position: relative; 
 	font-family: 'Oswald', sans-serif;
-	font-size: 8em;
+	font-size: 6em;
 	border: 1px #000 solid;
 	border-radius: 10px;
 	margin: 10px 10px;
-	width: 200px;
-	height: 300px;
-	line-height: 250px;
+	width: 150px;
+	height: 250px;
+	line-height: 220px;
 	white-space: nowrap;
 	text-align: center;
-    /* vertical-align: middle; */
+    transition: all 0.3s;
+    overflow: hidden;
+    cursor: pointer;
+} */
+
+
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; 
+	font-family: 'Oswald', sans-serif;
+	font-size: 6em;
+	border: 1px #000 solid;
+	border-radius: 10px;
+	margin: 10px 10px;
+	width: 150px;
+	height: 250px;
+	line-height: 220px;
+	white-space: nowrap;
+	text-align: center;
     transition: all 0.3s;
     overflow: hidden;
     cursor: pointer;
@@ -103,7 +130,7 @@
 
 
 .card-selected {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
 }
 
 .card-selected.card_inner {
@@ -124,6 +151,26 @@
     background: green;
     border-radius: 50%;
 }
+
+/* .player-card {
+	position: relative; 
+	font-family: 'Oswald', sans-serif;
+	font-size: 6em;
+	border: 1px #000 solid;
+	border-radius: 10px;
+	margin: 0 auto;
+	padding: 0;
+	width: 150px;
+	height: 250px;
+	line-height: 220px;
+	white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: hidden;
+    
+} */
+
 
 /* // score
 //////////// */

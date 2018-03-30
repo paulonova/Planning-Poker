@@ -7,7 +7,7 @@ var playerName;
 var player;
 var selectedCard = null;
 var gameState = false;
-var isPlayerSelected = false;
+var isPlayerSelected = false;  //bool false...
 
 
 /**ELEMENTS ***/
@@ -20,37 +20,37 @@ let nameInput = document.getElementById('name');
 
 
 class Player{
-    constructor(playerName, playerSelected){
+    constructor(playerName, selectedCard){
         this.playerName = playerName;
-        this.isPlayerSelected = playerSelected;
+        this.selectedCard = selectedCard;
     }
 
-    setPlayerSelected(status){
-        this.isPlayerSelected = status;
+    setCardValue(value){
+        this.selectedCard = value;
     }
 
-    getPlayerSelected(){
-        return this.isPlayerSelected;
+    getCardValue(){
+        return this.selectedCard;
     }
 }
 
 
-/** CREATE NEW PLAYER ****************************/
+/** CREATE NEW PLAYER BUTTON ****************************/
 addPlayerBtn.addEventListener("click", function(){
     playerName = nameInput.value;
 
     if(playerName != ""){        
-        player = new Player(playerName, true); // *OBJECT
-        console.log("AddPlayer: " + player.playerName);
+        player = new Player(playerName); // *OBJECT
         isPlayerSelected = true;  
-        player.setPlayerSelected(true);
         nameInput.value = "";
+        console.log("Player Name ==>: " + player.playerName);
+        console.log("CARD VALUE ==>: " + player.selectedCard);
     }else{
         isPlayerSelected = false;
         alert("Please enter your name");
     }
-    // console.log("Player Selected: " + player.getPlayerSelected());
-    console.log("Player Selected: " + isPlayerSelected);
+        console.log("Player Selected - 1: " + isPlayerSelected);
+    
     
 });
 
@@ -69,6 +69,8 @@ function renderCards(){
 function addCard(element, value, name){
     let cardElement = document.createElement("DIV");
     // console.log("ADD_CARD: " + element + " value: " + value + " Name: " + name);
+    console.log("ADD_CARD: " + isPlayerSelected);
+    
 
     if(name){
         cardElement.className = value ? 'card card-user card-ready' : 'card card-user';
@@ -101,7 +103,7 @@ function addCard(element, value, name){
                     + name + '</div>' : '') + '</div>';
             }
             console.log("cardSelected2: " + isCardSelected);
-            // renderScore(name);
+            renderScore(name);
             isCardSelected = false;
         }
 
@@ -113,21 +115,24 @@ function addCard(element, value, name){
 /**Card click */
 function selectCard(card){
 
-    console.log("selectCard: " + isPlayerSelected);  // cannot be true!!!!!!!
+    console.log("isPlayerSelected-2: " + isPlayerSelected);
 
     if(isPlayerSelected){
         selectedCard = card;
         isCardSelected = true;
+        player.setCardValue(card);
+        console.log("PLAYER GET CARD: " + player.getCardValue());
         render();
     }else{
         alert("Create first a player..");
         isCardSelected = false;
     }
+    
 }
 
 function render(){
     renderCards();
-    renderScore();
+    // renderScore();
 }
 
 
@@ -140,20 +145,29 @@ function renderScore(name){
 
     if(isPlayerSelected){
         // let name = document.getElementById("name").value;
+        // users.push(name);
         users.push(name);
-        users.forEach( x => {addCard(score, true, "paulo");
-                                console.log("TESTANDO x: " + score + " Name: " + x);
-                            });
+
+        /**O PROBLEMA ESTA NO FOREACH *********** */
+
+        // for (var i = 0; i < users.length; i++) {
+        //     console.log("Player[" + i + "}: " + player[i].playerName);
+        //     console.log("Player[" + i + "}: " + player[i].player.selectedCard);
+        //     addCard(score, true, player[i].playerName);
+            
+        // }
+
+        users.forEach( x => {
+            addCard(score, true, player.playerName);
+            console.log("TESTANDO : " + score + " Name: " + player.playerName);
+            console.log("TESTANDO : " + score + " Card: " + player.selectedCard);
+            });
         isPlayerSelected = false;
 
     }else{
         isPlayerSelected = true;
     }
 }
-
-
-
-
 
 
 /**FUNCTION to add user cards in Players Waiting */
@@ -190,6 +204,4 @@ function renderUserCards(){
 }
 
 /** Render UI elements */
-
-
 render();

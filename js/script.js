@@ -26,7 +26,7 @@ class Player{
     }
 
     setPlayerSelected(status){
-        this.playerSelected = status;
+        this.isPlayerSelected = status;
     }
 
     getPlayerSelected(){
@@ -35,11 +35,40 @@ class Player{
 }
 
 
+/** CREATE NEW PLAYER ****************************/
+addPlayerBtn.addEventListener("click", function(){
+    playerName = nameInput.value;
+
+    if(playerName != ""){        
+        player = new Player(playerName, true); // *OBJECT
+        console.log("AddPlayer: " + player.playerName);
+        isPlayerSelected = true;  
+        player.setPlayerSelected(true);
+        nameInput.value = "";
+    }else{
+        isPlayerSelected = false;
+        alert("Please enter your name");
+    }
+    // console.log("Player Selected: " + player.getPlayerSelected());
+    console.log("Player Selected: " + isPlayerSelected);
+    
+});
+
+
+/**RENDER CARDS *** */
+function renderCards(){
+    deck.innerHTML = "";
+    cards.forEach((item, index) => {
+        // addCard(deck, item, "playerName");
+        addCard(deck, item);
+        console.log(item + " - " + index);
+    });    
+}
 
 
 function addCard(element, value, name){
     let cardElement = document.createElement("DIV");
-    console.log("ADD_CARD: " + element + " value: " + value + " Name: " + name);
+    // console.log("ADD_CARD: " + element + " value: " + value + " Name: " + name);
 
     if(name){
         cardElement.className = value ? 'card card-user card-ready' : 'card card-user';
@@ -49,8 +78,7 @@ function addCard(element, value, name){
         cardElement.className = value == selectedCard ? 'card card-selected' : 'card';
         cardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' 
             + name + '</div>' : '') + '</div>';
-    }
-    
+    }    
 
     /**CARD EVENT LISTENER ***/
     cardElement.addEventListener("click", function(){
@@ -73,6 +101,7 @@ function addCard(element, value, name){
                     + name + '</div>' : '') + '</div>';
             }
             console.log("cardSelected2: " + isCardSelected);
+            // renderScore(name);
             isCardSelected = false;
         }
 
@@ -83,7 +112,9 @@ function addCard(element, value, name){
 
 /**Card click */
 function selectCard(card){
-    
+
+    console.log("selectCard: " + isPlayerSelected);  // cannot be true!!!!!!!
+
     if(isPlayerSelected){
         selectedCard = card;
         isCardSelected = true;
@@ -92,44 +123,73 @@ function selectCard(card){
         alert("Create first a player..");
         isCardSelected = false;
     }
+}
 
+function render(){
+    renderCards();
+    renderScore();
 }
 
 
-/** AddPlayer EVENT*/
-addPlayerBtn.addEventListener("click", function(){
-    playerName = nameInput.value;
+function renderScore(name){
+    console.log("RENDER SCORE************");
+    console.log("GAME STATE: " + gameState);
+    console.log("Name: " + name);
+    console.log("Player Selected: " + isPlayerSelected);
     
-    player = new Player(playerName, false);
 
-    if(player.playerName || playerName != ""){
-        console.log("AddPlayer: " + player.playerName);
-        isPlayerSelected = true;  
-        player.setPlayerSelected(true);
-        nameInput.value = "";
-    }else{
+    if(isPlayerSelected){
+        // let name = document.getElementById("name").value;
+        users.push(name);
+        users.forEach( x => {addCard(score, true, "paulo");
+                                console.log("TESTANDO x: " + score + " Name: " + x);
+                            });
         isPlayerSelected = false;
-        alert("Please enter your name");
+
+    }else{
+        isPlayerSelected = true;
     }
-    console.log("Player Selected: " + player.getPlayerSelected());
-    
-});
+}
 
 
 
-/**RENDER CARDS *** */
-function renderCards(){
+
+
+
+/**FUNCTION to add user cards in Players Waiting */
+function addUsersCard(element, value, name){
+
+    let userCardElement = document.createElement("DIV");
+    // console.log("ADD_CARD: " + element + " value: " + value + " Name: " + name);
+
+    if(name){
+        userCardElement.className = value ? 'card card-user card-ready' : 'card card-user';
+        userCardElement.innerHTML = '<div class="card_inner">' + (gameState ? value : '') 
+            + (name ? '<div class="card_name">' + name + '</div>' : '') + '</div>';
+    }else{
+        userCardElement.className = value == selectedCard ? 'card card-selected' : 'card';
+        userCardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' 
+            + name + '</div>' : '') + '</div>';
+    }
+
+    userCardElement.addEventListener("click", function(){
+        console.log("Value: " + value, " Name: " + name);
+    })
+}
+
+
+
+
+/**RENDER USER CARDS *** */
+function renderUserCards(){
     deck.innerHTML = "";
     cards.forEach((item, index) => {
-        // addCard(deck, item, "playerName");
-        addCard(deck, item);
+        addCard("renderUserCards: " + deck, item, "playerName");
+        // addCard(deck, item);
     });
 }
 
 /** Render UI elements */
-function render(){
-    renderCards();
-    // renderScore();
-}
+
 
 render();

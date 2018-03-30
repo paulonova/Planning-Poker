@@ -22,7 +22,7 @@
 
 .gameName{    
     font-family: 'Oswald', sans-serif;
-    background-color: darkolivegreen;
+    text-shadow: 4px 2px rgb(2, 151, 81);
     width: 100%;
     padding: 10px;
     font-size: 5em;
@@ -41,11 +41,6 @@
     margin: 0 auto;
 }
 
-/* .controls.input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(235, 11, 11);    
-} */
 
 .controls_button {
     margin-top: 10px;
@@ -68,28 +63,6 @@
 
 
 /* // card */
-
-/* #user-section{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    position: relative; 
-	font-family: 'Oswald', sans-serif;
-	font-size: 6em;
-	border: 1px #000 solid;
-	border-radius: 10px;
-	margin: 10px 10px;
-	width: 150px;
-	height: 250px;
-	line-height: 220px;
-	white-space: nowrap;
-	text-align: center;
-    transition: all 0.3s;
-    overflow: hidden;
-    cursor: pointer;
-} */
-
-
 
 .card {
     display: flex;
@@ -159,36 +132,20 @@
     border-radius: 50%;
 }
 
-/* .player-card {
-	position: relative; 
-	font-family: 'Oswald', sans-serif;
-	font-size: 6em;
-	border: 1px #000 solid;
-	border-radius: 10px;
-	margin: 0 auto;
-	padding: 0;
-	width: 150px;
-	height: 250px;
-	line-height: 220px;
-	white-space: nowrap;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    overflow: hidden;
-    
-} */
-
 
 /* // score
 //////////// */
 
 .score {
-    text-align: center;
-    overflow: auto;
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    white-space: nowrap;
+    padding-top: 30px; 
+    width: auto;
 }
 
-.score_title{
+.players-waiting{
     text-align: center;
     padding: 10px;
 }

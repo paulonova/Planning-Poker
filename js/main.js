@@ -137,6 +137,7 @@ function render(){
 function renderScore(){
     score.innerHTML = '<br><div class="score_title">Players Waiting</div>';
     console.log("GAME STATE: " + gameState);
+    
     if(gameState){
         score.classList.add('score-visible');
     }else{

@@ -14,3 +14,7 @@ you to Reveal phase.
 
 3. Reveal phase: The card that you chose in step one is revealed. Another interaction will
 then get you to Select phase again.
+
+
+Link to gitPages: https://paulonova.github.io/Planning-Poker/
+

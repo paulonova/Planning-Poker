@@ -37,6 +37,39 @@ function getConfirmation(message){
  }
 
 
+ /** Function typeEffect */
+ function typeEffect(element, speed) {
+	var text = $(element).text();
+	$(element).html('');	
+	var i = 0;
+	var timer = setInterval(function() {
+					if (i < text.length) {
+						$(element).append(text.charAt(i));
+						i++;
+					} else {
+						clearInterval(timer);
+					}
+				}, speed);
+}
+
+
+/**Animating the Text Header */
+$( document ).ready(function() {
+  var speed = 75;
+  var delay = $('h1').text().length * speed + speed;
+  typeEffect($('h1'), speed);
+});
+
+/**Animating who is playing */
+$( document ).ready(function() {
+    var speed = 75;
+    var delay = $('h4').text().length * speed + speed;
+    setTimeout(function(){
+      $('.who_is_playing').css('display', 'inline-block');
+      typeEffect($('.who_is_playing'), speed);
+    }, delay);
+  });
+
 /**
  * Show cards
  */
@@ -101,6 +134,17 @@ class Player{
 }
 
 
+function setWhoIsPlaying(playerName, status){
+    let whoIsPlaying = document.getElementById("who_is_playing");
+
+    if(status){
+        whoIsPlaying.innerHTML = playerName + " is playing..";
+    }else{
+        whoIsPlaying.innerHTML = "";
+    }
+}
+
+
 /** CREATE NEW PLAYER BUTTON ****************************/
 addPlayerBtn.addEventListener("click", function(){
     playerName = nameInput.value;
@@ -109,6 +153,7 @@ addPlayerBtn.addEventListener("click", function(){
         player = new Player(playerName); // *OBJECT
         isPlayerSelected = true;  
         nameInput.value = "";
+        setWhoIsPlaying(playerName, true);
         console.log("Player Name ==>: " + player.playerName);
         console.log("CARD VALUE ==>: " + player.selectedCard);
     }else{
@@ -163,6 +208,7 @@ function addCard(element, value, name, isFromScore){
         console.log("cardSelected0: " + isCardSelected);
 
     if(!isFromScore){
+
         if(!isCardSelected){
             selectCard(value);
             console.log("cardSelected1: " + isCardSelected);                       
@@ -180,6 +226,7 @@ function addCard(element, value, name, isFromScore){
             }
             console.log("cardSelected2: " + isCardSelected);
             renderScore(name);
+            setWhoIsPlaying("", false);
             isCardSelected = false;
         }
 

@@ -14,24 +14,30 @@
 <body>
 
 
-    <main class="main_app container">
+    <main class="main_app container-fluid">
         
-            <div class="header jumbotron bg-secondary">
+            <div class="header">
                     <h1 class="gameName">Planning Poker</h1>
             </div>
-            <div class="container">
+            <div class="steps_container">
                 <h3>To play the game, follow the steps..</h3>
-                <a href="#" class="btn btn-primary" data-toggle="popover" title="User Creation" 
-                data-content="Insert your name on field and click addPlayer.">Step 1</a>
-                
-                <a href="#" class="btn btn-warning" data-toggle="popover" title="Card Selection" 
-                data-content="You can only select one card at once by clicking two times on choosen card.">Step 2</a>
-                
-                <a href="#" class="btn btn-danger" data-toggle="popover" title="Card Reviewing" 
-                data-content="After everyone has already chosen their cards, Click in the button 'Show' to review all cards.">Step 3</a>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" 
+                        title="<b><u>User Creation</u></b><br> Insert your name on field and click addPlayer.">
+                    Step 1
+                </button>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" 
+                        title="<b><u>Card Selection</u></b><br> You can only select one card at once by clicking <b><u>two times</u></b> on choosen card.">
+                    Step 2
+                </button>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" 
+                        title="<b><u>Card Reviewing</u></b><br> After everyone has already chosen their cards, Click in the button 'Show' to review all cards.">
+                    Step 3
+                </button>
+                <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" 
+                        title="<b><u>Clear Game</u></b><br> Click in the button 'Clear' to restart the game.">
+                    Step 4
+                </button>
 
-                <a href="#" class="btn btn-danger" data-toggle="popover" title="Clear Game" 
-                data-content="Click in the button 'Clear' to restart the game.">Step 4</a>
             </div>
             <br>
             

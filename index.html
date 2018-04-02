@@ -13,12 +13,27 @@
 </head>
 <body>
 
+
     <main class="main_app container">
         
             <div class="header jumbotron bg-secondary">
                     <h1 class="gameName">Planning Poker</h1>
             </div>
-            <br><br><br>
+            <div class="container">
+                <h3>To play the game, follow the steps..</h3>
+                <a href="#" class="btn btn-primary" data-toggle="popover" title="User Creation" 
+                data-content="Insert your name on field and click addPlayer.">Step 1</a>
+                
+                <a href="#" class="btn btn-warning" data-toggle="popover" title="Card Selection" 
+                data-content="You can only select one card at once by clicking two times on choosen card.">Step 2</a>
+                
+                <a href="#" class="btn btn-danger" data-toggle="popover" title="Card Reviewing" 
+                data-content="After everyone has already chosen their cards, Click in the button 'Show' to review all cards.">Step 3</a>
+
+                <a href="#" class="btn btn-danger" data-toggle="popover" title="Clear Game" 
+                data-content="Click in the button 'Clear' to restart the game.">Step 4</a>
+            </div>
+            <br>
             
             <section>
                     <div class="app">
@@ -30,7 +45,6 @@
                                         <button class="btn" id="show">Show</button>
                                         <button class="btn" id="clear">Clear</button>
                                         <button class="btn" id="add-player">Add Player</button>
-                                        <!-- <button class="btn" id="add-player">Add Player</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -51,22 +65,13 @@
 
 
             <!-- Player Section -->
-                <section id="user-section" class="players-container ">                                         
+                <section id="user-section" class="players-container "> 
+                    <!--User selected card shows here..  -->
                 </section> 
-
                 <br><br><br>
 
 
-    </main>
-
-
-    
-    
-
-
-
-
-    
+    </main>    
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

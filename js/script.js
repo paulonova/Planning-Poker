@@ -9,7 +9,7 @@ var player;
 var selectedCard = null;
 var gameState = false;  // to show or not show cards!
 var isPlayerSelected = false;  
-
+var isFromScore = false;
 
 /**ELEMENTS ***/
 let deck = document.getElementById('deck');
@@ -19,15 +19,55 @@ let clearBtn = document.getElementById('clear');
 let addPlayerBtn = document.getElementById('add-player');
 let nameInput = document.getElementById('name');
 
+//Function to show popover..
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+
+
+/**Function to confirm actions */
+function getConfirmation(message){
+    var retVal = confirm(message);
+    if( retVal == true ){
+       return true;
+    }
+    else{
+       return false;
+    }
+ }
+
 
 /**
  * Show cards
- * The preventDefault() method cancels the event if it is cancelable, 
- * meaning that the default action that belongs to the event will not occur.
  */
-showBtn.addEventListener('click', function(e){
-    console.log("Show button");
-    e.preventDefault();
+showBtn.addEventListener('click', function(){
+    if(playersList.length > 0 && getConfirmation("This command will show all cards! Are you shure?")){
+
+        console.log("Show button"); 
+        for (let i = 0; i < playersList.length; i++) {
+
+            //Testing outputs..
+            console.log("****************************");
+            console.log("NAME: " + playersList[i].name);
+            console.log("CARD: " + playersList[i].card);
+            console.log("****************************");
+
+            let score = document.getElementById("score");
+            let card = score.getElementsByClassName("card")[i];
+            let cardInner = card.getElementsByClassName("card_inner")[0];
+            card.getElementsByClassName("card_inner")[0].innerHTML = playersList[i].card;
+
+            let cardName = document.createElement("DIV");
+            
+            cardName.setAttribute("class", "card_name");
+            let textName = document.createTextNode(playersList[i].name);
+            cardName.appendChild(textName);
+            cardInner.appendChild(cardName);        
+        }
+
+    }else{
+        console.log("No users playing the game..");
+    }
     
 });
 
@@ -35,9 +75,12 @@ showBtn.addEventListener('click', function(e){
 /**
  * Clear cards
  */
-clearBtn.addEventListener('click', function(e){
+clearBtn.addEventListener('click', function(){
     console.log("Clear button");
-    e.preventDefault();
+    if(getConfirmation("This command will restart the game! Are you shure?")){
+        location.reload();
+    }
+    
     
 });
 
@@ -72,26 +115,32 @@ addPlayerBtn.addEventListener("click", function(){
         isPlayerSelected = false;
         alert("Please enter your name");
     }
-        console.log("Player Selected - 1: " + isPlayerSelected);    
+        console.log("Player Selected - 1: " + isPlayerSelected); 
+        
     
 });
+
+function render(){
+    renderCards();
+}
 
 
 /**RENDER CARDS *** */
 function renderCards(){
     deck.innerHTML = "";
     cards.forEach((item, index) => {
-        // addCard(deck, item, "playerName");
         addCard(deck, item);
-        console.log(item + " - " + index);
     });    
 }
 
 
-function addCard(element, value, name){
+/** Render UI elements */
+render();
+
+
+function addCard(element, value, name, isFromScore){
     let cardElement = document.createElement("DIV");
-    // console.log("ADD_CARD: " + element + " value: " + value + " Name: " + name);
-    console.log("ADD_CARD: " + isPlayerSelected);
+    let userCardElement = document.createElement("DIV");
     
 
     if(name){
@@ -102,13 +151,18 @@ function addCard(element, value, name){
         cardElement.className = value == selectedCard ? 'card card-selected' : 'card';
         cardElement.innerHTML = '<div class="card_inner">' + value + (name ? '<div class="card_name">' 
             + name + '</div>' : '') + '</div>';
-    }    
+    }
+
+    userCardElement.addEventListener("click", function(){
+        console.log("USER-CARD... ");
+    })
 
     /**CARD EVENT LISTENER ***/
     cardElement.addEventListener("click", function(){
         console.log("Card EVENT: " + value);
         console.log("cardSelected0: " + isCardSelected);
 
+    if(!isFromScore){
         if(!isCardSelected){
             selectCard(value);
             console.log("cardSelected1: " + isCardSelected);                       
@@ -129,9 +183,16 @@ function addCard(element, value, name){
             isCardSelected = false;
         }
 
-    })
+    }else{
+
+        console.log("Is From renderScore");
+    }
+
+        
+    });
 
     element.appendChild(cardElement);
+    
 }
 
 /**Card click */
@@ -152,18 +213,10 @@ function selectCard(card){
     
 }
 
-function render(){
-    renderCards();
-    // renderScore();
-}
 
 
-function renderScore(name){
-    console.log("RENDER SCORE************");
-    console.log("GAME STATE: " + gameState);
-    console.log("Name: " + name);
-    console.log("Player Selected: " + isPlayerSelected);
-    
+
+function renderScore(name, gameStatus){ 
 
     if(isPlayerSelected){
 
@@ -172,13 +225,7 @@ function renderScore(name){
         singleUser['name'] = player.playerName;
         singleUser['card'] = player.selectedCard;
         playersList.push(singleUser);
-        addCard(score, true, player.playerName);
-
-        console.log("TESTANDO : " + score + " Name: " + player.playerName);
-        console.log("TESTANDO : " + score + " Card: " + player.selectedCard);
-        console.log("Users-Length : " + users.length);
-        console.log("singleUser : " + singleUser.name + " Card: " + singleUser.card);
-
+        addCard(score, true, player.playerName, true);
         isPlayerSelected = false;
 
         //Testing outputs..
@@ -192,6 +239,3 @@ function renderScore(name){
     }
 }
 
-
-/** Render UI elements */
-render();

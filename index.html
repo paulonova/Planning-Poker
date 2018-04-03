@@ -11,15 +11,18 @@
     <!-- <script src="js/main.js" defer></script> -->
     <script src="js/script.js" defer></script>
 </head>
-<body>
+<body>   
+    
+        <header class="header jumbotron">
+                <h1 class="gameName">Planning Poker</h1>                
+        </header>
 
 
     <main class="main_app container-fluid">
         
-            <div class="header">
-                    <h1 class="gameName">Planning Poker</h1>
-            </div>
-            <div class="steps_container">
+        
+            
+            <div class="steps_container"><!-- Step controls -->
                 <h3>To play the game, follow the steps..</h3>
                 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" 
                         title="<b><u>User Creation</u></b><br> Insert your name on field and click addPlayer.">
@@ -38,48 +41,45 @@
                     Step 4
                 </button>
 
-            </div>
+            </div><!-- Step controls -->
             <br>
             
-            <section class="container">
+            <section class="container"><!-- App Container -->
                     <div class="app">
-                            <div class="app_controls">
+                            <div class="app_controls"><!-- App input controls -->
                                 <div class="controls">
                                     <input class="input-player form-control" type="text" name="name" 
                                             id="name" placeholder="Write your name + click AddPlayer" />
-                                    <div class="controls_button">
+                                    <div class="controls_button"><!-- App control buttons -->
                                         <button class="btn" id="show">Show</button>
                                         <button class="btn" id="clear">Clear</button>
                                         <button class="btn" id="add-player">Add Player</button>
-                                    </div>
+                                    </div><!-- App control buttons -->
                                 </div>
-                            </div>
-                            <div class="typewriter">
+                            </div><!-- App input controls -->
+
+                            <div class="typewriter"><!-- Animated who is playing -->
                                 <h4 id="who_is_playing" class="who_is_playing"></h4>
-                            </div>
+                            </div><!-- Animated who is playing -->
                             
 
-                            <div class="app_stage">
+                            <div class="app_stage"><!-- Deck Stage -->
                                 <div class="deck " >
                                     <div class="deck_inner" id="deck">                
                                         <!-- Cards are created here in JS -->
                                     </div>
                                 </div>
-                            </div>
+                            </div><!-- Deck Stage -->
                             
-                            <div class="app_score">
+                            <div class="app_score"><!-- Deck Score -->
                                 <h3 class="players-waiting">Players Waiting</h3>
-                                <div class="score" id="score"></div>
-                            </div>
+                                <div class="score" id="score">
+                                    <!-- Player cards create here.. -->
+                                </div>
+                            </div><!-- Deck Score -->
                         </div>
-            </section>
-
-
-            <!-- Player Section -->
-                <section id="user-section" class="players-container "> 
-                    <!--User selected card shows here..  -->
-                </section> 
-                <br><br><br>
+            </section><!-- App Container -->
+            <br><br><br>
 
 
     </main>    

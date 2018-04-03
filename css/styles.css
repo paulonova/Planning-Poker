@@ -172,9 +172,6 @@ h1.gameName{
     transform: translateY(0);
 }
 
-.card-selected.card_inner {
-    /* background: #78a5a3; */
-}
 
 .card-user.card_inner {
     background: linear-gradient(to bottom right, #973999, #f8598b, #f7bf00)

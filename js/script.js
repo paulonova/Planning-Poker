@@ -71,7 +71,7 @@ $( document ).ready(function() {
   });
 
 /**
- * Show cards
+ * Show the hiden values of the cards
  */
 showBtn.addEventListener('click', function(){
     if(playersList.length > 0 && getConfirmation("This command will show all cards! Are you shure?")){
@@ -106,7 +106,7 @@ showBtn.addEventListener('click', function(){
 
 
 /**
- * Clear cards
+ * Clear cards and restart the game
  */
 clearBtn.addEventListener('click', function(){
     console.log("Clear button");
@@ -117,7 +117,7 @@ clearBtn.addEventListener('click', function(){
     
 });
 
-
+// Object Player..
 class Player{
     constructor(playerName, selectedCard){
         this.playerName = playerName;
@@ -133,7 +133,7 @@ class Player{
     }
 }
 
-
+// Function to set text of who is playing..
 function setWhoIsPlaying(playerName, status){
     let whoIsPlaying = document.getElementById("who_is_playing");
 
@@ -150,7 +150,7 @@ addPlayerBtn.addEventListener("click", function(){
     playerName = nameInput.value;
 
     if(playerName != ""){        
-        player = new Player(playerName); // *OBJECT
+        player = new Player(playerName);
         isPlayerSelected = true;  
         nameInput.value = "";
         setWhoIsPlaying(playerName, true);
@@ -165,6 +165,7 @@ addPlayerBtn.addEventListener("click", function(){
     
 });
 
+//Function to render the cards.
 function render(){
     renderCards();
 }
@@ -183,6 +184,7 @@ function renderCards(){
 render();
 
 
+//Create all cards element with there classes
 function addCard(element, value, name, isFromScore){
     let cardElement = document.createElement("DIV");
     let userCardElement = document.createElement("DIV");
@@ -234,12 +236,9 @@ function addCard(element, value, name, isFromScore){
 
         console.log("Is From renderScore");
     }
-
         
     });
-
-    element.appendChild(cardElement);
-    
+    element.appendChild(cardElement);    
 }
 
 /**Card click */
@@ -260,9 +259,7 @@ function selectCard(card){
     
 }
 
-
-
-
+// Generate the choosen card from a current player
 function renderScore(name, gameStatus){ 
 
     if(isPlayerSelected){

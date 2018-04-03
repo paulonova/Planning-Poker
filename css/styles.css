@@ -1,8 +1,9 @@
 
+/* Fonts from google fonts */
 @import url(https://fonts.googleapis.com/css?family=Passion+One:400);
 @import url(https://fonts.googleapis.com/css?family=Oswald:700);
 
-
+/* Fixing size limits */
 html, body{
     font-size: 1em;
     max-width: 2024px;
@@ -31,6 +32,7 @@ h2, h3{
     margin: 0;
 }
 
+/* Animated text in header */
 h1.gameName{  
     position: relative; 
     display: inline-block; 
@@ -50,6 +52,7 @@ h1.gameName{
     text-align: center;    
 }
 
+/* input field of player name */
 .input-player{
     width: 310px;
     margin: 0 auto;
@@ -69,8 +72,7 @@ h1.gameName{
     font-size: 1.5vw;
 }
 
-/* Typewriter Effect */
-
+/* Typewriter animation Effect *************/
 .typewriter h4 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     border-right: .15em solid orange; /* The typwriter cursor */
@@ -105,7 +107,7 @@ h1.gameName{
 /* ************************************ */
 
 
-/* // btn */
+/* all buttons */
 .btn {
     background: #ff7878;
     border: none;
@@ -119,8 +121,7 @@ h1.gameName{
 }
 
 
-/* // card */
-
+/* card specifications */
 .card {
     display: flex;
     justify-content: center;
@@ -142,7 +143,6 @@ h1.gameName{
 }
 
 .card_inner {
-    /* background: linear-gradient(to bottom right, #028056, #01c785, #00ffaa); */
     background: linear-gradient(to bottom right, #a74141, #ff7878, #f7bf00);
 	border-radius: 10px;
     width: 90%;
@@ -163,7 +163,7 @@ h1.gameName{
     line-height: 16px;
 }
 
-
+/* Movement up and down with the card */
 .card-selected {
     transform: translateY(-20px);
 }
@@ -172,11 +172,7 @@ h1.gameName{
     transform: translateY(0);
 }
 
-
-.card-user.card_inner {
-    background: linear-gradient(to bottom right, #973999, #f8598b, #f7bf00)
-}
-
+/* Small green point in user cards*/
 .card-ready:before {
     content: '';
     position: absolute;
@@ -189,7 +185,7 @@ h1.gameName{
 }
 
 
-/* // score
+/*  score
 //////////// */
 
 .score {
@@ -227,6 +223,7 @@ h1.gameName{
     width: auto;
 }
 
+/* Screen extra large */
 @media only screen and (max-width: 2200px) {
     h1.gameName{  
         position: relative;  
@@ -234,7 +231,7 @@ h1.gameName{
     }
 }
 
-
+/* Screen large */
 @media only screen and (max-width: 1600px) {    
 
     h1.gameName{  
@@ -244,7 +241,7 @@ h1.gameName{
 
 }
 
-
+/* Screen medium */
 @media only screen and (max-width: 1000px) {
     .steps_container h3{
         font-size: 2.5vw;
@@ -257,7 +254,7 @@ h1.gameName{
 
 }
 
-/* Mobile */
+/* screen Mobile */
 @media only screen and (max-width: 768px) {
    
     
